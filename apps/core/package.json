@@ -37,7 +37,8 @@
     "typecheck": "tsc",
     "start:dev": "tsx watch src/index.ts",
     "script:one-off": "tsx src/scripts/one-off/index.ts",
-    "migrate:seed": "npm run script:one-off seed-employees"
+    "migrate:seed": "npm run script:one-off seed-employees",
+    "docker:up": "docker compose up"
   },
   "dependencies": {
     "@murshidazher/employee-manager-api-utilities": "workspace:*",

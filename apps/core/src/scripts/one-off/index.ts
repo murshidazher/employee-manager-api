@@ -19,7 +19,7 @@ const executeScript = async (
       `src/scripts/one-off/${scriptName}`
     );
 
-    const script = new Constructor(scriptName, logger, args);
+    const script = new Constructor(scriptName, args);
     await script.run();
   } catch (error) {
     logger.error(
@@ -37,7 +37,7 @@ const execute = async (): Promise<void> => {
   // Load config
   config.load();
 
-  const { logger } = await import("core/logger");
+  const { logger } = await import("src/core/logger");
 
   logger.info(`Running a one-off script`);
 

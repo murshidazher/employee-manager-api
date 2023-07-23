@@ -2,6 +2,8 @@ import { type Logger } from "pino";
 
 import config from "src/config";
 
+import { logger } from "src/core/logger";
+
 import dbs from "core/dbs";
 import type MongoDB from "core/dbs/mongodb";
 
@@ -23,7 +25,7 @@ class Script implements Executable {
 
   #logger: Logger;
 
-  constructor(scriptName: string, logger: Logger, args?: string[]) {
+  constructor(scriptName: string, args?: string[]) {
     this.#scriptName = scriptName;
     this.#logger = logger;
     this.#args = args ?? [];

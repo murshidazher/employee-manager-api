@@ -27,6 +27,18 @@
 npm install -g pnpm
 ```
 
+4. Install docker daemon and use `docker-compose` to spin up the necessary services,
+
+```sh
+pnpm --filter core-api docker:up
+```
+
+5. Seed the employees
+
+```sh
+pnpm --filter core-api migrate:seed
+```
+
 ### Up and Running
 
 ```sh

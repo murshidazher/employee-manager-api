@@ -5,8 +5,6 @@
  * --------------
  * npm run script:one-off seed-employees
  */
-import { type Logger } from "pino";
-
 import constants from "core/constants";
 
 import employees from "./data/employees.json";
@@ -42,10 +40,6 @@ const snakeToCamelKeys = (
 };
 
 class SeedEmployees extends Script {
-  constructor(logger: Logger) {
-    super(__filename, logger);
-  }
-
   handle = async (): Promise<void> => {
     const { logger } = this;
 
@@ -55,12 +49,14 @@ class SeedEmployees extends Script {
 
     if (!mongo) return;
 
+    const now = new Date();
+
     const collection = mongo.db.collection(constants.collectionNames.employees);
 
     for (let i = 0; i < employees.length; i++) {
       const { id, ...payload } = employees[i];
 
-      const normalizedPayload = snakeToCamelKeys(payload);
+      const normalizedPayload = {...snakeToCamelKeys(payload), createdAt: now, updatedAt: now};
 
       await collection.findOneAndUpdate(
         {

@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "tests/*": ["tests/*"],
+      "objects/*": ["src/objects/*"],
+      "utils/*": ["src/utils/*"],
+      "core/*": ["src/core/*"],
+      "server/*": ["src/server/*"],
+      "src/*": ["src/*"],
+      "types/*": ["src/types/*"],
+      "package": ["package.json"]
+    }
+  },
+  "include": [
+    "types",
+    "src/**/*",
+    "tests/**/*",
+    "db/**/*",
+    "*.js",
+    "jest.*",
+    "package.json"
+  ]
+}

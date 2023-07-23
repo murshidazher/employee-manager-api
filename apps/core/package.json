@@ -1,0 +1,74 @@
+{
+  "name": "core-api",
+  "version": "0.5.0-development",
+  "description": "The core api",
+  "author": "Murshid Azher <hello@murshidazher.com>",
+  "license": "MIT",
+  "keywords": [
+    "monorepo",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/murshidazher/employee-manager-api.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7.5.1"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean:build": "rimraf ./dist",
+    "dev": "nodemon",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "prebuild": "pnpm exec rm -rf dist/",
+    "postbuild": "pnpm exec cp package.json dist/",
+    "test": "npm run test:unit && npm run test:integrations",
+    "test:integrations": "npm run build && TS_JEST_DISABLE_VER_CHECKER=true ROOT_PATH=. NODE_ENV=test jest --detectOpenHandles --runInBand --config  'jest.int.json'",
+    "test:unit": "ROOT_PATH=. NODE_ENV=test TS_JEST_DISABLE_VER_CHECKER=true jest --detectOpenHandles --config 'jest.json'",
+    "test:unit:coverage": "pnpm run test:unit -- --coverage ",
+    "test:unit:leaks": "node --expose-gc node_modules/jest/bin/jest --runInBand --logHeapUsage --config 'jest.json'",
+    "typecheck": "tsc",
+    "start:dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@murshidazher/employee-manager-api-utilities": "workspace:*",
+    "cors": "2.8.5",
+    "dotenv": "16.3.1",
+    "express": "4.18.2",
+    "fs-extra": "~11.1.1",
+    "http-status": "~1.6.2",
+    "mongodb": "5.7.0",
+    "mongodb-cursor-pagination": "1.8.0",
+    "pino": "8.14.1",
+    "pino-http": "8.3.3",
+    "radash": "~11.0.0",
+    "zod": "3.21.4"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.13",
+    "@types/express": "4.17.17",
+    "@types/chance": "1.1.3",
+    "@types/jest": "29.5.3",
+    "@types/jest-when": "3.5.2",
+    "@types/node": "18.16.19",
+    "@types/supertest": "~2.0.12",
+    "chance": "1.1.11",
+    "fishery": "2.2.2",
+    "jest-extended": "3.2.4",
+    "jest-junit": "16.0.0",
+    "jest-when": "3.5.2",
+    "mongodb-memory-server-core": "~8.13.0",
+    "supertest": "~6.3.3",
+    "ts-jest": "29.1.1",
+    "tsx": "3.12.7"
+  }
+}

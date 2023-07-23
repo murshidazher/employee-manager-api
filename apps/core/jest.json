@@ -1,0 +1,37 @@
+{
+  "verbose": true,
+  "displayName": "unit-tests",
+  "preset": "ts-jest",
+  "bail": true,
+  "testTimeout": 20000,
+  "clearMocks": true,
+  "testEnvironment": "node",
+  "setupFilesAfterEnv": [
+    "jest-extended/all",
+    "<rootDir>/tests/setup-environment.spec.ts"
+  ],
+  "reporters": ["default", "jest-junit"],
+  "collectCoverageFrom": ["src/**/{!(index),}.ts"],
+  "testMatch": ["<rootDir>/**/*.spec.ts"],
+  "testPathIgnorePatterns": ["<rootDir>/tests/setup-environment.spec.ts"],
+  "modulePathIgnorePatterns": ["<rootDir>/dist/"],
+  "moduleNameMapper": {
+    "^api/(.*)$": "<rootDir>/$1",
+    "^src/(.*)$": "<rootDir>/src/$1",
+    "^tests/(.*)$": "<rootDir>/tests/$1",
+    "^objects/(.*)$": "<rootDir>/src/objects/$1",
+    "^server/(.*)$": "<rootDir>/src/server/$1",
+    "^utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^core/(.*)$": "<rootDir>/src/core/$1",
+    "^types/(.*)$": "<rootDir>/src/types/$1",
+    "package": "<rootDir>/package.json"
+  },
+  "transform": {
+    "^.+\\.[tj]sx?$": [
+      "ts-jest",
+      {
+        "isolatedModules": true
+      }
+    ]
+  }
+}

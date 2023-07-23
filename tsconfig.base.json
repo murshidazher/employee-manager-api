@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "esnext",
+    "module": "esnext",
+    "incremental": true,
+    "declaration": true,
+    "allowJs": true,
+    "noEmit": true,
+
+    /* Strict Type-Checking Options */
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "resolveJsonModule": true,
+
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+
+    /* Other Options */
+    "strict": true,
+    "sourceMap": true,
+
+    "removeComments": true,
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["esnext"],
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

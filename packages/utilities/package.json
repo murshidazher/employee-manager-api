@@ -1,0 +1,38 @@
+{
+  "name": "@murshidazher/employee-manager-api-utilities",
+  "version": "0.5.0-development",
+  "description": "The common utilities package",
+  "author": "Murshid Azher <hello@murshidazher.com>",
+  "license": "MIT",
+  "keywords": [
+    "monorepo",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/murshidazher/employee-manager-api.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7.5.1"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean:build": "rimraf ./dist",
+    "dev": "nodemon",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "jest",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "fs-extra": "~11.1.1"
+  }
+}

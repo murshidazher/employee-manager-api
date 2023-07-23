@@ -1,5 +1,6 @@
 {
   "name": "core-api",
+  "serviceName": "employee-manager",
   "version": "0.5.0-development",
   "description": "The core api",
   "author": "Murshid Azher <hello@murshidazher.com>",
@@ -19,10 +20,8 @@
     "node": ">=18",
     "pnpm": ">=7.5.1"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "swc src -d dist/src --log-watch-compilation --copy-files",
     "clean:build": "rimraf ./dist",
     "dev": "nodemon",
     "lint": "eslint . --ext .js,.ts",
@@ -30,14 +29,15 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "prebuild": "pnpm exec rm -rf dist/",
-    "postbuild": "pnpm exec cp package.json dist/",
     "test": "npm run test:unit && npm run test:integrations",
     "test:integrations": "npm run build && TS_JEST_DISABLE_VER_CHECKER=true ROOT_PATH=. NODE_ENV=test jest --detectOpenHandles --runInBand --config  'jest.int.json'",
     "test:unit": "ROOT_PATH=. NODE_ENV=test TS_JEST_DISABLE_VER_CHECKER=true jest --detectOpenHandles --config 'jest.json'",
     "test:unit:coverage": "pnpm run test:unit -- --coverage ",
     "test:unit:leaks": "node --expose-gc node_modules/jest/bin/jest --runInBand --logHeapUsage --config 'jest.json'",
     "typecheck": "tsc",
-    "start:dev": "tsx watch src/index.ts"
+    "start:dev": "tsx watch src/index.ts",
+    "script:one-off": "tsx src/scripts/one-off/index.ts",
+    "migrate:seed": "npm run script:one-off seed-employees"
   },
   "dependencies": {
     "@murshidazher/employee-manager-api-utilities": "workspace:*",
@@ -54,9 +54,9 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
+    "@types/chance": "1.1.3",
     "@types/cors": "2.8.13",
     "@types/express": "4.17.17",
-    "@types/chance": "1.1.3",
     "@types/jest": "29.5.3",
     "@types/jest-when": "3.5.2",
     "@types/node": "18.16.19",
@@ -66,6 +66,7 @@
     "jest-extended": "3.2.4",
     "jest-junit": "16.0.0",
     "jest-when": "3.5.2",
+    "mockdate": "~3.0.5",
     "mongodb-memory-server-core": "~8.13.0",
     "supertest": "~6.3.3",
     "ts-jest": "29.1.1",

@@ -1,9 +1,9 @@
 import data, { type Data } from "./data";
 import http, { type Http } from "./http";
 
-type Employees = {
-  data: Data,
-  http: Http
+interface Employees {
+  data: Data;
+  http: Http;
 }
 
 const employees: Employees = {

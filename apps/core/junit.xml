@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="20" failures="0" errors="0" time="1.187">
+  <testsuite name="objects.employee.data.update()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:30" time="0.4" tests="2">
+    <testcase classname="objects.employee.data.update() should update an employee document and return the count of modified documents" name="objects.employee.data.update() should update an employee document and return the count of modified documents" time="0.002">
+    </testcase>
+    <testcase classname="objects.employee.data.update() should return 0 when no documents are updated" name="objects.employee.data.update() should return 0 when no documents are updated" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.get()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:30" time="0.111" tests="4">
+    <testcase classname="objects.employee.data.get() fetches employee data from database based on id" name="objects.employee.data.get() fetches employee data from database based on id" time="0.003">
+    </testcase>
+    <testcase classname="objects.employee.data.get() returns the fetched employee data" name="objects.employee.data.get() returns the fetched employee data" time="0.001">
+    </testcase>
+    <testcase classname="objects.employee.data.get() returns an empty array when mongodb does not find the matching employees" name="objects.employee.data.get() returns an empty array when mongodb does not find the matching employees" time="0.001">
+    </testcase>
+    <testcase classname="objects.employee.data.get() returns the count of matching employees" name="objects.employee.data.get() returns the count of matching employees" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.convert()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.091" tests="1">
+    <testcase classname="objects.employee.data.convert() returns the expected converted employee object" name="objects.employee.data.convert() returns the expected converted employee object" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.add()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.126" tests="1">
+    <testcase classname="objects.employee.data.add() add the employee" name="objects.employee.data.add() add the employee" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.getMongoQuery()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.095" tests="1">
+    <testcase classname="objects.employee.data.getMongoQuery() returns the constructed mongo query with mongodb id" name="objects.employee.data.getMongoQuery() returns the constructed mongo query with mongodb id" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.remove()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.109" tests="2">
+    <testcase classname="objects.employee.data.remove() should delete multiple documents and return the count of deleted documents" name="objects.employee.data.remove() should delete multiple documents and return the count of deleted documents" time="0.002">
+    </testcase>
+    <testcase classname="objects.employee.data.remove() should return 0 when no documents are deleted" name="objects.employee.data.remove() should return 0 when no documents are deleted" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.error.data()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.055" tests="4">
+    <testcase classname="objects.error.data() throws a not found error with specified message" name="objects.error.data() throws a not found error with specified message" time="0.001">
+    </testcase>
+    <testcase classname="objects.error.data() throws an operation failed error with specified message" name="objects.error.data() throws an operation failed error with specified message" time="0.001">
+    </testcase>
+    <testcase classname="objects.error.data() throws an invalid input error with specified message" name="objects.error.data() throws an invalid input error with specified message" time="0">
+    </testcase>
+    <testcase classname="objects.error.data() throws an access denied error with specified message" name="objects.error.data() throws an access denied error with specified message" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.employee.data.getSortOption()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.053" tests="4">
+    <testcase classname="objects.employee.data.getSortOption() returns an empty object when no sorting option is provided" name="objects.employee.data.getSortOption() returns an empty object when no sorting option is provided" time="0.001">
+    </testcase>
+    <testcase classname="objects.employee.data.getSortOption() returns the constructed sort query with createdAt as ASC" name="objects.employee.data.getSortOption() returns the constructed sort query with createdAt as ASC" time="0.002">
+    </testcase>
+    <testcase classname="objects.employee.data.getSortOption() returns the constructed sort query with updatedAt as DESC" name="objects.employee.data.getSortOption() returns the constructed sort query with updatedAt as DESC" time="0">
+    </testcase>
+    <testcase classname="objects.employee.data.getSortOption() returns the constructed sort query with multiple sort options" name="objects.employee.data.getSortOption() returns the constructed sort query with multiple sort options" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="objects.api.data.version()" errors="0" failures="0" skipped="0" timestamp="2023-07-23T18:21:31" time="0.051" tests="1">
+    <testcase classname="objects.api.data.version() returns the current version of API" name="objects.api.data.version() returns the current version of API" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

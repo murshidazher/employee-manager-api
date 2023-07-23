@@ -5,7 +5,6 @@ import { logger } from "src/core/logger";
 import * as server from "src/server";
 import { type RequestMethod } from "src/types/common/request-method";
 
-
 export class API {
   app: Application | undefined;
   token: string | null;
@@ -22,7 +21,6 @@ export class API {
 
     this.token = null;
   }
-
 
   requestHttp = async (
     urlSlug: string,

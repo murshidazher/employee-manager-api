@@ -21,6 +21,10 @@ const config: EnvConfig = {
       "mongodb://127.0.0.1:27017/?directConnection=true&ssl=false",
     db: process.env.MONGO_DB_NAME ?? "employee-manager",
   },
+  logger: {
+    level: "debug",
+    enabled: true,
+  },
 };
 
 export default config;

@@ -1,6 +1,6 @@
 import version from "./version";
 
-export type Data = {
+export interface Data {
   version: () => string;
 }
 

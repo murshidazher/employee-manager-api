@@ -9,6 +9,8 @@ const toArray = jest.fn();
 const distinct = jest.fn();
 const aggregate = jest.fn();
 const bulkWrite = jest.fn();
+const deleteMany = jest.fn();
+const updateOne = jest.fn();
 
 // mock all cursor pagination methods
 const findPaginated = jest.fn();
@@ -22,6 +24,8 @@ const collection = jest.fn((_collectionName: string) => ({
   insertOne,
   findOneAndUpdate,
   findOne,
+  deleteMany,
+  updateOne,
   find,
   sort,
   distinct,
@@ -47,6 +51,7 @@ export {
   mockMongo,
   findPaginated,
   withTransaction,
+  deleteMany,
   aggregatePaginated,
   collection,
   countDocuments,
@@ -56,6 +61,7 @@ export {
   find,
   distinct,
   bulkWrite,
+  updateOne,
   sort,
   toArray,
 };

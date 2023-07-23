@@ -1,3 +1,5 @@
+import { type LoggerOptions } from "pino";
+
 import { type Environment } from "types/common/environment";
 
 import { type Host } from "./host";
@@ -8,15 +10,11 @@ interface EnvConfig {
   name: string;
   serviceName: string;
   version: string;
+  logger: LoggerOptions;
   environment: Environment;
   host: Host;
   mongo: MongoConnection;
   test?: TestOptions;
 }
 
-export type {
-  EnvConfig,
-  Host,
-  MongoConnection,
-  TestOptions,
-};
+export type { EnvConfig, Host, MongoConnection, TestOptions };

@@ -1,7 +1,8 @@
-import type { Request, Response } from "express";
-import getVersion from "./api";
+import { type Request, type Response } from "express";
 
-export type Http = {
+import getVersion from "./get-version";
+
+export interface Http {
   getVersion: (req: Request, res: Response) => void;
 }
 

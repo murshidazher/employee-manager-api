@@ -1,8 +1,26 @@
 {
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "tests/*": ["tests/*"],
+      "objects/*": ["src/objects/*"],
+      "utils/*": ["src/utils/*"],
+      "core/*": ["src/core/*"],
+      "server/*": ["src/server/*"],
+      "src/*": ["src/*"],
+      "types/*": ["src/types/*"],
+      "package": ["package.json"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["types", "src/**/*", "package.json"],
+  "exclude": [
+    "node_modules",
+    ".vscode",
+    "tests/**/*",
+    "**/*.spec.ts",
+    "**/*.int.ts",
+    "src/**/__mocks__"
+  ]
 }

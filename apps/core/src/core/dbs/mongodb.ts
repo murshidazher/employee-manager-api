@@ -1,13 +1,4 @@
-import {
-  MongoClient,
-  ReadConcern,
-  ReadPreference,
-  WriteConcern,
-  type ClientSession,
-  type Db,
-  type MongoClientOptions,
-  type TransactionOptions,
-} from "mongodb";
+import { MongoClient, type Db, type MongoClientOptions } from "mongodb";
 import {
   aggregatePaginated,
   findPaginated,
@@ -20,13 +11,6 @@ import { type MongoConnection } from "src/config/types/mongo-connection";
 import { type MongodbCollectionName } from "src/core/constants";
 import { logger } from "src/core/logger";
 import { type Page } from "src/types/common/page";
-
-const defaultTransactionOptions: TransactionOptions = {
-  readConcern: new ReadConcern("snapshot"),
-  writeConcern: new WriteConcern("majority"),
-  readPreference: new ReadPreference("primary"),
-  maxCommitTimeMS: 1000,
-};
 
 interface CollectionResponse {
   name: MongodbCollectionName;
@@ -164,29 +148,6 @@ class MongoDB implements IMongoDB {
       pipeline,
       sort,
     });
-
-  withTransaction = async <T = unknown>(
-    func: (session: ClientSession) => Promise<T>,
-    transactionOptions?: TransactionOptions
-  ): Promise<T> => {
-    const session = this.client.startSession({ defaultTransactionOptions });
-    let result: T | undefined;
-    try {
-      await session.withTransaction(async () => {
-        result = await func(session);
-        return result;
-      }, transactionOptions);
-      return result as T;
-    } catch (error) {
-      logger.error(
-        error,
-        "An error occurred in the mongodb transaction, performing a data rollback."
-      );
-      throw error;
-    } finally {
-      await session.endSession();
-    }
-  };
 }
 
 export default MongoDB;

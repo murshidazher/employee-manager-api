@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { type MongoMemoryReplSetOpts } from "mongodb-memory-server-core/lib/MongoMemoryReplSet";
 
 /**

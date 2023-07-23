@@ -1,9 +1,9 @@
 import data, { type Data } from "./data";
 import http, { type Http } from "./http";
 
-type Api = {
-  data: Data,
-  http: Http
+interface Api {
+  data: Data;
+  http: Http;
 }
 
 const api: Api = {

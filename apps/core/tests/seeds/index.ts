@@ -1,7 +1,7 @@
-import { type Logger } from "pino";
+import { logger } from "core/logger";
 
 // seeds
-const seedTestDatabase = async (logger: Logger): Promise<void> => {
+const seedTestDatabase = async (): Promise<void> => {
   logger.info("Running test db seeds...");
   // add default seeds here
   logger.info("Finishing test db seeds...");

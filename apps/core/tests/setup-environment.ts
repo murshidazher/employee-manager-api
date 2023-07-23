@@ -1,7 +1,6 @@
 import config from "src/config";
 
 import dbs from "core/dbs";
-import { logger } from "core/logger";
 
 import seedTestDatabase from "./seeds";
 
@@ -12,9 +11,12 @@ beforeAll(async () => {
   await dbs.mongo.connect();
 
   // test seeds
-  await seedTestDatabase(logger);
+  await seedTestDatabase();
 });
 
 afterAll(async () => {
   await dbs.mongo.db.dropDatabase();
+
+  // close open handles
+  await dbs.mongo.close().catch();
 });

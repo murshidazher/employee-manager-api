@@ -1,18 +1,12 @@
-
+import { onSyncDynamicImport } from "@murshidazher/employee-manager-api-utilities";
 import { assign } from "radash";
 
 import schema from "src/config/schema";
 
-import { onSyncDynamicImport } from "@murshidazher/employee-manager-api-utilities";
-
 import * as env from "types/common/environment";
 
 import commonConfig from "./common";
-import {
-  type EnvConfig,
-  type Host,
-  type MongoConnection,
-} from "./types";
+import { type EnvConfig, type Host, type MongoConnection } from "./types";
 
 interface IConfig {
   data: EnvConfig | undefined;
@@ -28,10 +22,10 @@ export class Config implements IConfig {
 
   load = (): void => {
     const envConfig = onSyncDynamicImport(
-      `./${commonConfig.environment}`
+      `src/config/${commonConfig.environment}`
     ) as EnvConfig;
     const localEnvConfig = onSyncDynamicImport(
-      `./${commonConfig.environment}.local`
+      `src/config/${commonConfig.environment}.local`
     ) as EnvConfig;
 
     this.data = assign(assign(commonConfig, envConfig), localEnvConfig);

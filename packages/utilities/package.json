@@ -22,6 +22,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prebuild": "pnpm exec rm -rf dist/",
     "build": "tsc -p tsconfig.build.json",
     "clean:build": "rimraf ./dist",
     "dev": "nodemon",

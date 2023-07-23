@@ -1,6 +1,4 @@
-const MONGODB_COLLECTION_NAMES = [
-  "employees",
-] as const;
+const MONGODB_COLLECTION_NAMES = ["employees"] as const;
 
 type MongodbCollectionName = (typeof MONGODB_COLLECTION_NAMES)[number];
 const collectionNames: {
@@ -10,14 +8,12 @@ const collectionNames: {
   ...MONGODB_COLLECTION_NAMES.map((collection: MongodbCollectionName) => ({
     [collection]: `${collection}`,
   }))
-  );
+);
 
 const constants = {
   collectionNames,
 };
 
-export type {
-  MongodbCollectionName,
-};
+export type { MongodbCollectionName };
 
 export default constants;

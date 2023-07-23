@@ -1,4 +1,5 @@
-import type { Request, Response } from "express";
+import { type Request, type Response } from "express";
+
 import data from "objects/api/data";
 
 const getVersion = (req: Request, res: Response): void => {

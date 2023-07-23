@@ -11,8 +11,8 @@ const loggerOptions: LoggerOptions = {
       return { level: label };
     },
   },
-  level: "debug",
-  enabled: true,
+  level: config.data.logger.level,
+  enabled: config.data.logger.enabled,
 };
 
 /**

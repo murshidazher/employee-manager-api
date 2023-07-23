@@ -9,6 +9,7 @@ const EnvConfigSchema = z.object({
   serviceName: z.string(),
   version: z.string(),
   environment: z.string(),
+  logger: z.any(),
   host: HostSchema,
   mongo: MongoConnectionSchema,
   test: TestOptionsSchema,

@@ -39,6 +39,12 @@ pnpm build
 pnpm --filter core-api start:dev
 ```
 
+To execute any `core-api` script without changing directories,
+
+```sh
+pnpm --filter core-api {command}
+```
+
 ## LICENSE
 
 [MIT](./LICENSE) &copy; [Murshid Azher](https://github.com/murshidazher)

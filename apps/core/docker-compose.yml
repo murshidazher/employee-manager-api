@@ -1,0 +1,44 @@
+# Adding docker-compose to run databases in docker.
+#
+# The compose file is controlled via
+#
+# DOCKER_ARCH: Architecture of OS. Default: 'arm'.
+#
+#
+# 1. Run the container(s).
+#
+#       $ docker compose up
+#
+
+version: "3.9"
+services:
+  #####
+  ## Required services for employee-manager
+  #####
+  mongo1:
+    image: mongo:6.0.5
+    container_name: mongodb
+    environment:
+      - MONGODB_INITDB_DATABASE=employee-manager
+    ports:
+      - "27017:27017"
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+    networks:
+      - db
+  mongo-setup:
+    image: mongo:6.0.5
+    links:
+      - mongo1
+    restart: "no"
+    volumes:
+      - ./playpen:/playpen
+    command:
+      - ./playpen/mongo-setup.sh
+    networks:
+      - db
+
+networks:
+  db: {}
+
+

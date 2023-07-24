@@ -27,14 +27,16 @@ describe("objects.employee.http.add()", () => {
         employee.getEmployee() as RawEmployee;
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual([
-        expect.objectContaining({
-          id: _id.toString(),
-          ...rest,
-          createdAt: createdAt.toISOString(),
-          updatedAt: updatedAt.toISOString(),
-        }),
-      ]);
+      expect(response.body).toEqual({
+        data: [
+          expect.objectContaining({
+            id: _id.toString(),
+            ...rest,
+            createdAt: createdAt.toISOString(),
+            updatedAt: updatedAt.toISOString(),
+          }),
+        ],
+      });
     });
 
     it("should return an empty array with a 200 response if the employee id is not present", async () => {
@@ -43,7 +45,7 @@ describe("objects.employee.http.add()", () => {
       });
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual([]);
+      expect(response.body).toEqual({ data: [] });
     });
   });
 });

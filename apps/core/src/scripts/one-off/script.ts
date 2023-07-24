@@ -1,7 +1,6 @@
 import { type Logger } from "pino";
 
 import config from "src/config";
-
 import { logger } from "src/core/logger";
 
 import dbs from "core/dbs";

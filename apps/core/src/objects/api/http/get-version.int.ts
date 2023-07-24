@@ -14,7 +14,7 @@ describe("objects.api.http.getVersion()", () => {
 
       expect(response.statusCode).toEqual(status.OK);
       expect(response.body).toEqual({
-        version: pkg.version,
+        data: { version: pkg.version },
       });
     });
   });

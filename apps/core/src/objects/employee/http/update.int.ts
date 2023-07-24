@@ -1,11 +1,12 @@
-import { findOne } from 'src/__mocks__/mongo';
 import status from "http-status";
 
 import api from "tests/api";
 import { dropCollections } from "tests/factory/mongo/utils/helpers";
 import Employee from "tests/helpers/employee.helper";
-import { RawEmployee } from "../types";
+
 import dbs from "core/dbs";
+
+import { type RawEmployee } from "../types";
 
 describe("objects.employee.http.update()", () => {
   let employee: Employee;
@@ -24,29 +25,29 @@ describe("objects.employee.http.update()", () => {
         `/v1/employee/${employee.getId()?.toString()}`,
         "put",
         {
-          firstName: "John"
+          firstName: "John",
         }
       );
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual({ modifiedCount: 1 });
+      expect(response.body).toEqual({ data: { modifiedCount: 1 } });
 
       // check the db record
       const rawEmployee = await dbs.mongo.db
         .collection<RawEmployee>("employees")
         .findOne({
-          _id: employee.getId()
+          _id: employee.getId(),
         });
 
-      const prevEmployeeRecord =
-        employee.getEmployee() as RawEmployee;
+      const prevEmployeeRecord = employee.getEmployee() as RawEmployee;
 
       expect(rawEmployee).toEqual(
         expect.objectContaining({
           ...prevEmployeeRecord,
           firstName: "John",
           updatedAt: rawEmployee?.updatedAt,
-        }))
+        })
+      );
     });
 
     it("should return a 404 not found if the employee id is not given as params", async () => {
@@ -63,7 +64,7 @@ describe("objects.employee.http.update()", () => {
       );
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual({ modifiedCount: 0 });
+      expect(response.body).toEqual({ data: { modifiedCount: 0 } });
     });
   });
 });

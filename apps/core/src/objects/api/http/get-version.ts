@@ -4,7 +4,7 @@ import data from "objects/api/data";
 
 const getVersion = (req: Request, res: Response): void => {
   res.send({
-    version: data.version(),
+    data: { version: data.version() },
   });
 };
 

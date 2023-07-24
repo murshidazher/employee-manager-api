@@ -56,7 +56,11 @@ class SeedEmployees extends Script {
     for (let i = 0; i < employees.length; i++) {
       const { id, ...payload } = employees[i];
 
-      const normalizedPayload = {...snakeToCamelKeys(payload), createdAt: now, updatedAt: now};
+      const normalizedPayload = {
+        ...snakeToCamelKeys(payload),
+        createdAt: now,
+        updatedAt: now,
+      };
 
       await collection.findOneAndUpdate(
         {

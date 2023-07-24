@@ -10,7 +10,7 @@ const update = async (req: Request, res: Response): Promise<void> => {
   }
 
   const result = await data.update(empId, req.body);
-  res.send(result);
+  res.send({ data: result });
 };
 
 export default update;

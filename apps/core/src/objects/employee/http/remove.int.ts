@@ -24,7 +24,7 @@ describe("objects.employee.http.remove()", () => {
       );
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual({ deletedCount: 1 });
+      expect(response.body).toEqual({ data: { deletedCount: 1 } });
     });
 
     it("should return a 404 not found if the employee id is not given as params", async () => {
@@ -41,7 +41,7 @@ describe("objects.employee.http.remove()", () => {
       );
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual({ deletedCount: 0 });
+      expect(response.body).toEqual({ data: { deletedCount: 0 } });
     });
   });
 });

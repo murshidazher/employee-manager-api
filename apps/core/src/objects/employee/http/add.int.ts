@@ -18,8 +18,8 @@ describe("objects.employee.http.add()", () => {
       });
 
       expect(response.statusCode).toEqual(status.OK);
-      expect(response.body).toEqual(
-        expect.objectContaining({
+      expect(response.body).toEqual({
+        data: expect.objectContaining({
           id: expect.any(String),
           createdAt: expect.any(String),
           email: "Darrin_Rippin@gmail.com",
@@ -29,8 +29,8 @@ describe("objects.employee.http.add()", () => {
           number: "+94771277218",
           photo: expect.any(String),
           updatedAt: expect.any(String),
-        })
-      );
+        }),
+      });
     });
   });
 });

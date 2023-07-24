@@ -35,7 +35,7 @@
     "test:unit:coverage": "pnpm run test:unit -- --coverage ",
     "test:unit:leaks": "node --expose-gc node_modules/jest/bin/jest --runInBand --logHeapUsage --config 'jest.json'",
     "typecheck": "tsc",
-    "start:dev": "tsx watch src/index.ts",
+    "start:dev": "tsx watch src/index.ts | npx pino-pretty -i time,hostname,module,__in,name,pid",
     "script:one-off": "tsx src/scripts/one-off/index.ts",
     "migrate:seed": "npm run script:one-off seed-employees",
     "docker:up": "docker compose up"
@@ -71,6 +71,7 @@
     "mongodb-memory-server-core": "~8.13.0",
     "supertest": "~6.3.3",
     "ts-jest": "29.1.1",
+    "pino-pretty": "10.0.1",
     "tsx": "3.12.7"
   }
 }

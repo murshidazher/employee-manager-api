@@ -11,9 +11,12 @@ const router: Router = Router({});
 router.get("/version", api.http.getVersion);
 
 /* employee */
-router.get("/employee", employee.http.get);
-router.post("/employee", employee.http.add);
-router.put("/employee/:empId", employee.http.update);
-router.delete("/employee/:empId", employee.http.remove);
+
+const EMPLOYEE_SLUG = "/employee";
+router.get(EMPLOYEE_SLUG, employee.http.get);
+router.get(`${EMPLOYEE_SLUG}/:empId`, employee.http.get);
+router.post(EMPLOYEE_SLUG, employee.http.add);
+router.put(`${EMPLOYEE_SLUG}/:empId`, employee.http.update);
+router.delete(`${EMPLOYEE_SLUG}/:empId`, employee.http.remove);
 
 export default router;

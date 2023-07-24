@@ -2,8 +2,6 @@ import httpStatus from "http-status";
 import { type Level } from "pino";
 import pinoHttp, { type HttpLogger, type Options } from "pino-http";
 
-import config from "src/config";
-
 import { logger } from "core/logger";
 
 import { DEFAULT_ERROR_CODE } from "objects/error/constants";

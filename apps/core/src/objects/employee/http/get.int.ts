@@ -18,10 +18,31 @@ describe("objects.employee.http.add()", () => {
   });
 
   describe("GET /", () => {
-    it("should get the employee with the given id and return a 200 response", async () => {
-      const response = await api.requestHttp(`/v1/employee/`, "get", {
-        ids: [employee.getId()?.toString()],
+    it("should get all the employees", async () => {
+      const response = await api.requestHttp(`/v1/employee`, "get", {});
+
+      const { _id, createdAt, updatedAt, ...rest } =
+        employee.getEmployee() as RawEmployee;
+
+      expect(response.statusCode).toEqual(status.OK);
+      expect(response.body).toEqual({
+        data: [
+          expect.objectContaining({
+            id: _id.toString(),
+            ...rest,
+            createdAt: createdAt.toISOString(),
+            updatedAt: updatedAt.toISOString(),
+          }),
+        ],
       });
+    });
+
+    it("should get the employee with the given id and return a 200 response", async () => {
+      const response = await api.requestHttp(
+        `/v1/employee/${employee.getId()?.toString()}`,
+        "get",
+        {}
+      );
 
       const { _id, createdAt, updatedAt, ...rest } =
         employee.getEmployee() as RawEmployee;
@@ -40,9 +61,11 @@ describe("objects.employee.http.add()", () => {
     });
 
     it("should return an empty array with a 200 response if the employee id is not present", async () => {
-      const response = await api.requestHttp(`/v1/employee`, "get", {
-        ids: ["5ce77168bcc028f9613019ea"],
-      });
+      const response = await api.requestHttp(
+        `/v1/employee/5ce77168bcc028f9613019ea`,
+        "get",
+        {}
+      );
 
       expect(response.statusCode).toEqual(status.OK);
       expect(response.body).toEqual({ data: [] });

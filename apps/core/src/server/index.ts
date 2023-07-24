@@ -1,12 +1,13 @@
 import cors from "cors";
 import express, { type Express } from "express";
 
-import router from "./router";
-import { logRequestMiddleware } from "./middlewares/log-request";
-import { errorConverter, errorHandler } from "./middlewares/error";
-import notFound from "./middlewares/not-found";
 import dbs from "core/dbs";
 import { logger } from "core/logger";
+
+import { errorConverter, errorHandler } from "./middlewares/error";
+import { logRequestMiddleware } from "./middlewares/log-request";
+import notFound from "./middlewares/not-found";
+import router from "./router";
 
 const create = async (): Promise<Express> => {
   const server = express();
@@ -25,7 +26,7 @@ const create = async (): Promise<Express> => {
   // v1 api routes
   server.use("/v1", router);
 
-   // send back a 404 error for any unknown api request
+  // send back a 404 error for any unknown api request
   server.use(notFound);
 
   // convert error to ApplicationError, if needed

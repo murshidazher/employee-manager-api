@@ -41,7 +41,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.6.6",
     "@ianvs/prettier-plugin-sort-imports": "4.0.2",
-    "@newlevelup/commitlint-config": "1.1.11",
+    "@newlevelup/commitlint-config": "1.1.14",
     "@newlevelup/syncpack-config": "1.2.0",
     "@jest/globals": "^29.5.0",
     "@swc/cli": "0.1.62",

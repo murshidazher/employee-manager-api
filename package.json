@@ -50,7 +50,7 @@
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/fs-extra": "~11.0.1",
     "@types/jest": "29.5.3",
-    "@types/node": "^18.15.3",
+    "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "esbuild": "0.18.12",
